@@ -29,7 +29,7 @@ class HorseController extends Controller
         $em->persist($horse);
         $em->flush();
         
-        return new Response('Horse added!');
+        return new Response('<html><body>Horse added!</body></html>');
    }
   
   /**
