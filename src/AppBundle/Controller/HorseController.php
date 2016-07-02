@@ -13,6 +13,14 @@ class HorseController extends Controller
 {
   
   /**
+    * @Route("/horse/new")
+    */
+   public function newAction()
+   {
+       $horse = new Horse();
+   }
+  
+  /**
    * @Route("/horse/{horseName}")
    */
   public function showAction($horseName)

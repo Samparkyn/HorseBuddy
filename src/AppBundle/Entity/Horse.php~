@@ -1,0 +1,41 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="horse")
+ */
+class Horse
+{
+  /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $name;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $age;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $breed;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $disipline;
+    
+}
