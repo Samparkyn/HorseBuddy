@@ -31,16 +31,31 @@ class HorseController extends Controller
         
         return new Response('<html><body>Horse added!</body></html>');
    }
+   
+   /**
+      * @Route("/horse")
+      */
+     public function listAction()
+     {
+       $em = $this->getDoctrine()->getManager();
+       
+       $horses = $em->getRepository('AppBundle:Horse')
+             ->findAll();
+       
+      return $this->render('horse/list.html.twig', [
+          'horses' => $horses
+        ]);
+     }
   
   /**
-   * @Route("/horse/{horseName}")
+   * @Route("/horse/{horseName}", name="horse_show" )
    */
   public function showAction($horseName)
   {
     return $this->render('horse/show.html.twig', array(
-            'name' => $horseName
+            'horse' => $horse
         ));
        
-    return new Response($html);
   }
+  
 }

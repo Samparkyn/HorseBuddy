@@ -1,2 +1,22 @@
+{% extends 'base.html.twig' %}
 
-<h1>Horse {{ name }}</h1>
+{% block title %}Horse {{ name }}{% endblock %}
+
+{% block body %}
+    <h2 class="horse-name">{{ name }}</h2>
+
+    <div class="horse-container">
+        <div class="horse-photo"></div>
+        <div class="horse-details">
+            <dl class="horse-details-list">
+                <dt>Age:</dt>
+                <dd>{{ horse.age }}</dd>
+                <dt>Breed:</dt>
+                <dd>{{ horse.breed }}</dd>
+                <dt>Disipline:</dt>
+                <dd>{{ horse.disipline }}</dd>
+            </dl>
+        </div>
+    </div>
+    <div id="js-notes-wrapper"></div>
+{% endblock %}

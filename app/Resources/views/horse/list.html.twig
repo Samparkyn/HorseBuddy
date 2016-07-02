@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Horse</th>
+                <th>Age</th>
+                <th>Breed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horse in horses %}
+                <tr>
+                    <td>
+                        <a href="{{ path('horse_show', {'horseName': horse.name}) }}">
+                            {{ horse.name }}
+                        </a>
+                    </td>
+                    <td>{{ horse.age }}</td>
+                    <td>{{ horse.breed}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
