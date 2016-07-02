@@ -17,10 +17,9 @@ class HorseController extends Controller
    */
   public function showAction($horseName)
   {
-    $templating = $this->container->get('templating');
-    $html = $templating->render('horse/show.html.twig', array(
-           'name' => $horseName
-       ));
+    return $this->render('horse/show.html.twig', array(
+            'name' => $horseName
+        ));
        
     return new Response($html);
   }
