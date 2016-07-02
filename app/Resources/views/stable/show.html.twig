@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stable {{ stable.name }}{% endblock %}
+
+{% block body %}
+    <h2 class="horse-name">{{ stable.name }}</h2>
+
+    <div class="horse-container">
+        <div class="horse-photo"></div>
+        <div class="horse-details">
+            <dl class="horse-details-list">
+                <dt>Location:</dt>
+                <dd>{{ stable.location }}</dd>
+                <dt>Capacity:</dt>
+                <dd>{{ stable.capacity }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

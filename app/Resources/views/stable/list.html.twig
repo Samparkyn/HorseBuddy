@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Stable</th>
+                <th>Location</th>
+                <th>Capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stable in stables %}
+                <tr>
+                    <td>
+                        <a href="{{ path('stable_show', {'stableName': stable.name}) }}">
+                            {{ stable.name }}
+                        </a>
+                    </td>
+                    <td>{{ stable.location }}</td>
+                    <td>{{ stable.capacity}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

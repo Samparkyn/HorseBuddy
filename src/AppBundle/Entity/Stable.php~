@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="horse")
+ * @ORM\Table(name="stable")
  */
-class Horse
+class Stable
 {
   /**
      * @ORM\Id
@@ -24,20 +24,17 @@ class Horse
     private $name;
     
     /**
+     * @ORM\Column(type="string")
+     */
+    private $location;
+    
+    /**
      * @ORM\Column(type="integer")
      */
-    private $age;
+    private $capacity;
     
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $breed;
     
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $disipline;
-    
+
 
     /**
      * Get id
@@ -54,7 +51,7 @@ class Horse
      *
      * @param string $name
      *
-     * @return Horse
+     * @return Stable
      */
     public function setName($name)
     {
@@ -74,74 +71,50 @@ class Horse
     }
 
     /**
-     * Set age
+     * Set location
      *
-     * @param integer $age
+     * @param string $location
      *
-     * @return Horse
+     * @return Stable
      */
-    public function setAge($age)
+    public function setLocation($location)
     {
-        $this->age = $age;
+        $this->location = $location;
 
         return $this;
     }
 
     /**
-     * Get age
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set capacity
+     *
+     * @param integer $capacity
+     *
+     * @return Stable
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
+
+        return $this;
+    }
+
+    /**
+     * Get capacity
      *
      * @return integer
      */
-    public function getAge()
+    public function getCapacity()
     {
-        return $this->age;
-    }
-
-    /**
-     * Set breed
-     *
-     * @param string $breed
-     *
-     * @return Horse
-     */
-    public function setBreed($breed)
-    {
-        $this->breed = $breed;
-
-        return $this;
-    }
-
-    /**
-     * Get breed
-     *
-     * @return string
-     */
-    public function getBreed()
-    {
-        return $this->breed;
-    }
-
-    /**
-     * Set disipline
-     *
-     * @param string $disipline
-     *
-     * @return Horse
-     */
-    public function setDisipline($disipline)
-    {
-        $this->disipline = $disipline;
-
-        return $this;
-    }
-
-    /**
-     * Get disipline
-     *
-     * @return string
-     */
-    public function getDisipline()
-    {
-        return $this->disipline;
+        return $this->capacity;
     }
 }
