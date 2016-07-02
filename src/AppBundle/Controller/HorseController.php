@@ -4,18 +4,24 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  *
  */
-class HorseController
+class HorseController extends Controller
 {
   
   /**
-   * @Route("/horse")
+   * @Route("/horse/{horseName}")
    */
-  public function showAction()
+  public function showAction($horseName)
   {
-    return new Response('Hey horsey');
+    $templating = $this->container->get('templating');
+    $html = $templating->render('horse/show.html.twig', array(
+           'name' => $horseName
+       ));
+       
+    return new Response($html);
   }
 }
