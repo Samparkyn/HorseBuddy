@@ -52,6 +52,14 @@ class HorseController extends Controller
    */
   public function showAction($horseName)
   {
+    
+    $em = $this->getDoctrine()->getManager();
+        $horse = $em->getRepository('AppBundle:Horse')
+            ->findOneBy(['name' => $horseName]);
+        if (!$horse) {
+            throw $this->createNotFoundException('horse not found :( )');
+        }
+        
     return $this->render('horse/show.html.twig', array(
             'horse' => $horse
         ));
