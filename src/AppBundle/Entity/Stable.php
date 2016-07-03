@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -11,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Stable
 {
+  
+  /**
+    * @var ArrayCollection
+    *
+    * @ORM\OneToMany(targetEntity="Horse", mappedBy="stable")
+    */
+    private $horse;
+  
   /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -116,5 +125,46 @@ class Stable
     public function getCapacity()
     {
         return $this->capacity;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->horse = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add horse
+     *
+     * @param \AppBundle\Entity\Horse $horse
+     *
+     * @return Stable
+     */
+    public function addHorse(\AppBundle\Entity\Horse $horse)
+    {
+        $this->horse[] = $horse;
+
+        return $this;
+    }
+
+    /**
+     * Remove horse
+     *
+     * @param \AppBundle\Entity\Horse $horse
+     */
+    public function removeHorse(\AppBundle\Entity\Horse $horse)
+    {
+        $this->horse->removeElement($horse);
+    }
+
+    /**
+     * Get horse
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHorse()
+    {
+        return $this->horse;
     }
 }

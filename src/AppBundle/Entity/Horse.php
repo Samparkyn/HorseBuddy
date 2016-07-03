@@ -11,6 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Horse
 {
+  
+  /**
+    * @var Stable
+    *
+    * @ORM\ManyToOne(targetEntity="Stable", inversedBy="horse")
+    * @ORM\JoinColumn(name="stable_id", referencedColumnName="id")
+    */
+    
+    private $stable;
+  
   /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -143,5 +153,29 @@ class Horse
     public function getDisipline()
     {
         return $this->disipline;
+    }
+
+    /**
+     * Set stable
+     *
+     * @param \AppBundle\Entity\Stable $stable
+     *
+     * @return Horse
+     */
+    public function setStable(\AppBundle\Entity\Stable $stable = null)
+    {
+        $this->stable = $stable;
+
+        return $this;
+    }
+
+    /**
+     * Get stable
+     *
+     * @return \AppBundle\Entity\Stable
+     */
+    public function getStable()
+    {
+        return $this->stable;
     }
 }

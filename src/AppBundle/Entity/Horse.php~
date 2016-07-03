@@ -11,6 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Horse
 {
+  
+  /**
+    * @var Stable
+    *
+    * @ORM\ManyToOne(targetEntity="Stable", inversedBy="horse")
+    * @ORM\JoinColumn(name="stable_id", referencedColumnName="id")
+    */
+    
+    private $stable;
+  
   /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
