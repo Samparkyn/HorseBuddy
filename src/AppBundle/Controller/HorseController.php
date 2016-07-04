@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Horse;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Form\HorseType;
 
 /**
  *
@@ -16,7 +18,7 @@ class HorseController extends Controller
   /**
     * @Route("/horse/new")
     */
-   public function newAction()
+   public function newAction(Request $request)
    {
        $horse = new Horse();
        $horse->setName('Lysi');
@@ -26,19 +28,22 @@ class HorseController extends Controller
        $horse->setStable($stable);
        
        $stable = new Stable();
-       $stable->setName('Chavannes des Bois Poney Club');
-       $stable->setLocation('Chavannes des Bois');
-       $stable->setCapacity(50);
        
-       
-       
-       
-       $em = $this->getDoctrine()->getManager();
-        $em->persist($horse);
-        $em->persist($stable);
-        $em->flush();
-        
-        return new Response('<html><body>Horse added!</body></html>');
+       $form = $this->createForm('AppBundle\Form\HorseType', $horse);
+         $form->handleRequest($request);
+
+         if ($form->isSubmitted() && $form->isValid()) {
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($horse);
+             $em->flush();
+
+             return $this->redirectToRoute('horse_show', array('id' => $horse->getId()));
+         }
+
+         return $this->render('horse/new.html.twig', array(
+             'horse' => $horse,
+             'form' => $form->createView(),
+         ));
    }
    
    /**
