@@ -23,10 +23,19 @@ class HorseController extends Controller
        $horse->setAge(17);
        $horse->setBreed('French Trotter');
        $horse->setDisipline('Jumping');
+       $horse->setStable($stable);
+       
+       $stable = new Stable();
+       $stable->setName('Chavannes des Bois Poney Club');
+       $stable->setLocation('Chavannes des Bois');
+       $stable->setCapacity(50);
+       
+       
        
        
        $em = $this->getDoctrine()->getManager();
         $em->persist($horse);
+        $em->persist($stable);
         $em->flush();
         
         return new Response('<html><body>Horse added!</body></html>');

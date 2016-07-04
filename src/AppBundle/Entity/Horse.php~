@@ -154,4 +154,28 @@ class Horse
     {
         return $this->disipline;
     }
+
+    /**
+     * Set stable
+     *
+     * @param \AppBundle\Entity\Stable $stable
+     *
+     * @return Horse
+     */
+    public function setStable(Stable $stable)
+    {
+        $this->stable = $stable;
+
+        return $this;
+    }
+
+    /**
+     * Get stable
+     *
+     * @return \AppBundle\Entity\Stable
+     */
+    public function getStable()
+    {
+        return $this->stable;
+    }
 }

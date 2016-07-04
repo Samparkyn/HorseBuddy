@@ -162,7 +162,7 @@ class Horse
      *
      * @return Horse
      */
-    public function setStable(\AppBundle\Entity\Stable $stable = null)
+    public function setStable(Stable $stable)
     {
         $this->stable = $stable;
 
