@@ -15,7 +15,7 @@ use AppBundle\Form\StableType;
 class StableController extends Controller
 {
   /**
-    * @Route("/stable/new")
+    * @Route("/stable/new", name="stable_new")
     * @Method({"GET", "POST"})
     */
    public function newAction()
@@ -39,7 +39,8 @@ class StableController extends Controller
    }
    
    /**
-      * @Route("/stable")
+      * @Route("/stable", name="stable")
+      * @Method("GET")
       */
      public function listAction()
      {
@@ -55,6 +56,7 @@ class StableController extends Controller
   
   /**
    * @Route("/stable/{stableName}", name="stable_show" )
+   * @Method("GET")
    */
   public function showAction($stableName)
   {
@@ -116,7 +118,7 @@ class StableController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('stable_index');
+        return $this->redirectToRoute('stable');
     }
 
     /**
