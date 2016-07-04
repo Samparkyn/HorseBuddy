@@ -16,4 +16,14 @@
             </dl>
         </div>
     </div>
+    
+    <ul>
+        <li>
+            <a href="{{ path('stable') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('stable_edit', { 'id': stable.id }) }}">Edit</a>
+        </li>
+        
+    </ul>
 {% endblock %}

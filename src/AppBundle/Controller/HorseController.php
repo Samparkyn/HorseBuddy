@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Horse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -78,7 +79,7 @@ class HorseController extends Controller
         
     return $this->render('horse/show.html.twig', array(
             'horse' => $horse,
-            'delete_form' => $deleteForm->createView()
+    
         ));
        
   }
@@ -91,7 +92,6 @@ class HorseController extends Controller
    */
   public function editAction(Request $request, Horse $horse)
   {
-      $deleteForm = $this->createDeleteForm($horse);
       $editForm = $this->createForm('AppBundle\Form\HorseType', $horse);
       $editForm->handleRequest($request);
 
@@ -106,44 +106,8 @@ class HorseController extends Controller
       return $this->render('horse/edit.html.twig', array(
           'horse' => $horse,
           'edit_form' => $editForm->createView(),
-          'delete_form' => $deleteForm->createView(),
       ));
   }
 
-  /**
-   * Deletes a Horse entity.
-   *
-   * @Route("/{id}", name="horse_delete")
-   * @Method("DELETE")
-   */
-  public function deleteAction(Request $request, Horse $horse)
-  {
-      $form = $this->createDeleteForm($horse);
-      $form->handleRequest($request);
-
-      if ($form->isSubmitted() && $form->isValid()) {
-          $em = $this->getDoctrine()->getManager();
-          $em->remove($horse);
-          $em->flush();
-      }
-
-      return $this->redirectToRoute('horse');
-  }
-
-  /**
-   * Creates a form to delete a Horse entity.
-   *
-   * @param Horse $horse The Horse entity
-   *
-   * @return \Symfony\Component\Form\Form The form
-   */
-  private function createDeleteForm(Horse $horse)
-  {
-      return $this->createFormBuilder()
-          ->setAction($this->generateUrl('horse_delete', array('id' => $horse->getId())))
-          ->setMethod('DELETE')
-          ->getForm()
-      ;
-  }
   
 }

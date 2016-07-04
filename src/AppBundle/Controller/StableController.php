@@ -82,7 +82,7 @@ class StableController extends Controller
      */
     public function editAction(Request $request, Stable $stable)
     {
-        $deleteForm = $this->createDeleteForm($stable);
+        
         $editForm = $this->createForm('AppBundle\Form\StableType', $stable);
         $editForm->handleRequest($request);
 
@@ -100,40 +100,5 @@ class StableController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    /**
-     * Deletes a Stable entity.
-     *
-     * @Route("/{id}", name="stable_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Stable $stable)
-    {
-        $form = $this->createDeleteForm($stable);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($stable);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('stable');
-    }
-
-    /**
-     * Creates a form to delete a Stable entity.
-     *
-     * @param Stable $stable The Stable entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Stable $stable)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('stable_delete', array('id' => $stable->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }

@@ -20,4 +20,14 @@
             </dl>
         </div>
     </div>
+    
+    <ul>
+      <li>
+          <a href="{{ path('horse') }}">Back to the list</a>
+      </li>
+      <li>
+          <a href="{{ path('horse_edit', { 'id': horse.id }) }}">Edit</a>
+      </li>
+    
+  </ul>
 {% endblock %}
