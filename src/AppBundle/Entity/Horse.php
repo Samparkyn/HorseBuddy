@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -49,7 +51,9 @@ class Horse
     private $disipline;
     
     /**
-     * @ORM\Column(type="string")
+     * @Vich\Uploadablefield(mapping="horse_image", fileNameProperty="imageName")
+     *
+     * @var File
      */
     private $image;
     
@@ -187,11 +191,11 @@ class Horse
     /**
      * Set image
      *
-     * @param string $image
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
      * @return Horse
      */
-    public function setImage($image)
+    public function setImage(File $image = null)
     {
         $this->image = $image;
 
@@ -201,7 +205,7 @@ class Horse
     /**
      * Get image
      *
-     * @return string
+     * @return File
      */
     public function getImage()
     {
