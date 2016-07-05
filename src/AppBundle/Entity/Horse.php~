@@ -48,6 +48,11 @@ class Horse
      */
     private $disipline;
     
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+    
 
     /**
      * Get id

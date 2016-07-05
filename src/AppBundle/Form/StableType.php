@@ -18,6 +18,7 @@ class StableType extends AbstractType
             ->add('name')
             ->add('location')
             ->add('capacity')
+            ->add('image')
         ;
     }
     

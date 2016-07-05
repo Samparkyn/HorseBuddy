@@ -24,11 +24,6 @@ class HorseController extends Controller
    public function newAction(Request $request)
    {
        $horse = new Horse();
-       $horse->setName('Lysi');
-       $horse->setAge(17);
-       $horse->setBreed('French Trotter');
-       $horse->setDisipline('Jumping');
-       
        
        $stable = new Stable();
        

@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class HorseType extends AbstractType
 {
@@ -19,6 +20,7 @@ class HorseType extends AbstractType
             ->add('age')
             ->add('breed')
             ->add('disipline')
+            ->add('image', FileType::class)
             ->add('stable')
         ;
     }

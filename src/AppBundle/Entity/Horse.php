@@ -48,6 +48,11 @@ class Horse
      */
     private $disipline;
     
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+    
 
     /**
      * Get id
@@ -177,5 +182,29 @@ class Horse
     public function getStable()
     {
         return $this->stable;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Horse
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
