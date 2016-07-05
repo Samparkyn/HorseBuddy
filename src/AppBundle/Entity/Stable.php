@@ -131,8 +131,12 @@ class Stable
      */
     public function __construct()
     {
-        $this->horse = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->horse = new ArrayCollection();
     }
+    
+    public function __toString(){
+    return $this ->getName();
+  }
 
     /**
      * Add horse

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Horse;
+use AppBundle\Entity\Stable;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,7 +28,7 @@ class HorseController extends Controller
        $horse->setAge(17);
        $horse->setBreed('French Trotter');
        $horse->setDisipline('Jumping');
-       $horse->setStable($stable);
+       
        
        $stable = new Stable();
        
@@ -73,6 +74,8 @@ class HorseController extends Controller
     $em = $this->getDoctrine()->getManager();
         $horse = $em->getRepository('AppBundle:Horse')
             ->findOneBy(['name' => $horseName]);
+            // $stableName = $horse->getStable();
+            
         if (!$horse) {
             throw $this->createNotFoundException('horse not found :( )');
         }

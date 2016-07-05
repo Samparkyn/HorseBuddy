@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Stable;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -18,9 +19,13 @@ class StableController extends Controller
     * @Route("/stable/new", name="stable_new")
     * @Method({"GET", "POST"})
     */
-   public function newAction()
+   public function newAction(Request $request)
    {
-       $stable = new Stable();
+     $stable = new Stable();
+     $stable->setName('Poney club');
+     $stable->setLocation('Chavannes des Bois');
+     $stable->setCapacity(50);
+     
        $form = $this->createForm('AppBundle\Form\StableType', $stable);
         $form->handleRequest($request);
 
@@ -58,19 +63,18 @@ class StableController extends Controller
    * @Route("/stable/{stableName}", name="stable_show" )
    * @Method("GET")
    */
-  public function showAction($stableName)
+  public function showAction(Stable $stable)
   {
     
-    $em = $this->getDoctrine()->getManager();
-        $stable = $em->getRepository('AppBundle:Stable')
-            ->findOneBy(['name' => $stableName]);
-        if (!$stable) {
-            throw $this->createNotFoundException('stable not found :( )');
-        }
+    // $em = $this->getDoctrine()->getManager();
+    //     $stable = $em->getRepository('AppBundle:Stable')
+    //         ->findOneBy(['name' => $stableName]);
+    //     if (!$stable) {
+    //         throw $this->createNotFoundException('stable not found :( )');
+    //     }
         
     return $this->render('stable/show.html.twig', array(
             'stable' => $stable,
-            'delete_form' => $deleteForm->createView()
         ));
       }
       
