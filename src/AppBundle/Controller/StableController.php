@@ -58,7 +58,7 @@ class StableController extends Controller
      }
   
   /**
-   * @Route("/stable/{stableName}", name="stable_show" )
+   * @Route("/stable/{id}", name="stable_show" )
    * @Method("GET")
    */
   public function showAction(Stable $stable)

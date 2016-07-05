@@ -13,7 +13,7 @@
             {% for stable in stables %}
                 <tr>
                     <td>
-                        <a href="{{ path('stable_show', {'stableName': stable.name}) }}">
+                        <a href="{{ path('stable_show', {'id': stable.id}) }}">
                             {{ stable.name }}
                         </a>
                     </td>

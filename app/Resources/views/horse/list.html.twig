@@ -19,6 +19,7 @@
                     </td>
                     <td>{{ horse.age }}</td>
                     <td>{{ horse.breed}}</td>
+                    
                 </tr>
             {% endfor %}
         </tbody>
@@ -27,6 +28,9 @@
     <ul>
       <li>
           <a href="{{ path('horse_new') }}">Add new horse</a>
+      </li>
+      <li>
+          <a href="{{ path('stable') }}">Go to Stable List</a>
       </li>
   </ul>
   
