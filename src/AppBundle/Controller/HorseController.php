@@ -66,19 +66,19 @@ class HorseController extends Controller
      }
   
   /**
-   * @Route("/horse/{horseName}", name="horse_show" )
+   * @Route("/horse/{id}", name="horse_show" )
    */
-  public function showAction($horseName)
+  public function showAction(Horse $horse)
   {
     
-    $em = $this->getDoctrine()->getManager();
-        $horse = $em->getRepository('AppBundle:Horse')
-            ->findOneBy(['name' => $horseName]);
-            // $stableName = $horse->getStable();
-            
-        if (!$horse) {
-            throw $this->createNotFoundException('horse not found :( )');
-        }
+    // $em = $this->getDoctrine()->getManager();
+    //     $horse = $em->getRepository('AppBundle:Horse')
+    //         ->findOneBy(['name' => $horseName]);
+    //         // $stableName = $horse->getStable();
+    //
+    //     if (!$horse) {
+    //         throw $this->createNotFoundException('horse not found :( )');
+    //     }
         
     return $this->render('horse/show.html.twig', array(
             'horse' => $horse,

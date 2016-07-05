@@ -13,7 +13,7 @@
             {% for horse in horses %}
                 <tr>
                     <td>
-                        <a href="{{ path('horse_show', {'horseName': horse.name}) }}">
+                        <a href="{{ path('horse_show', {'id': horse.id}) }}">
                             {{ horse.name }}
                         </a>
                     </td>
@@ -23,4 +23,11 @@
             {% endfor %}
         </tbody>
     </table>
+    
+    <ul>
+      <li>
+          <a href="{{ path('horse_new') }}">Add new horse</a>
+      </li>
+  </ul>
+  
 {% endblock %}

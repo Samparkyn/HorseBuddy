@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Stable;
+use AppBundle\Entity\Horse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,9 +23,6 @@ class StableController extends Controller
    public function newAction(Request $request)
    {
      $stable = new Stable();
-     $stable->setName('Poney club');
-     $stable->setLocation('Chavannes des Bois');
-     $stable->setCapacity(50);
      
        $form = $this->createForm('AppBundle\Form\StableType', $stable);
         $form->handleRequest($request);
@@ -101,7 +99,6 @@ class StableController extends Controller
         return $this->render('stable/edit.html.twig', array(
             'stable' => $stable,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
