@@ -21,7 +21,9 @@ class HorseType extends AbstractType
             ->add('breed')
             ->add('disipline')
             ->add('image', FileType::class)
-            ->add('stable')
+            ->add('stable', null, [
+                'placeholder' => 'Choose a Stable'
+            ])
         ;
     }
     
