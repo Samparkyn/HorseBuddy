@@ -64,15 +64,11 @@ class StableController extends Controller
   public function showAction(Stable $stable)
   {
     
-    // $em = $this->getDoctrine()->getManager();
-    //     $stable = $em->getRepository('AppBundle:Stable')
-    //         ->findOneBy(['name' => $stableName]);
-    //     if (!$stable) {
-    //         throw $this->createNotFoundException('stable not found :( )');
-    //     }
+    $deleteForm = $this->createDeleteForm($stable);
         
     return $this->render('stable/show.html.twig', array(
             'stable' => $stable,
+            'delete_form' => $deleteForm->createView()
         ));
       }
       
@@ -87,6 +83,7 @@ class StableController extends Controller
         
         $editForm = $this->createForm('AppBundle\Form\StableType', $stable);
         $editForm->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($stable);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -99,7 +96,45 @@ class StableController extends Controller
         return $this->render('stable/edit.html.twig', array(
             'stable' => $stable,
             'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView()
+            
         ));
     }
+    
+    /**
+   * Deletes a Stable entity.
+   *
+   * @Route("/{id}", name="stable_delete")
+   * @Method("DELETE")
+   */
+  public function deleteAction(Request $request, Stable $stable)
+  {
+      $form = $this->createDeleteForm($stable);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->remove($stable);
+          $em->flush();
+      }
+
+      return $this->redirectToRoute('stable');
+  }
+
+  /**
+   * Creates a form to delete a Stable entity.
+   *
+   * @param Stable $stable The Stable entity
+   *
+   * @return \Symfony\Component\Form\Form The form
+   */
+  private function createDeleteForm(Stable $stable)
+  {
+      return $this->createFormBuilder()
+          ->setAction($this->generateUrl('stable_delete', array('id' => $stable->getId())))
+          ->setMethod('DELETE')
+          ->getForm()
+      ;
+  }
 
 }

@@ -78,3 +78,12 @@ vich_uploader:
         inject_on_load:     false
         delete_on_update:   true
         delete_on_remove:   true
+        
+      stable_image:
+        uri_prefix:         /images/stables
+        upload_destination: %kernel.root_dir%/../web/images/stables
+        
+        inject_on_load:     false
+        delete_on_update:   true
+        delete_on_remove:   true
+        

@@ -3,7 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-  use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -41,6 +43,13 @@ class Stable
      * @ORM\Column(type="integer")
      */
     private $capacity;
+    
+    /**
+     * @Vich\Uploadablefield(mapping="stable_image", fileNameProperty="imageName")
+     *
+     * @var File
+     */
+    private $image;
     
     
 
@@ -131,8 +140,12 @@ class Stable
      */
     public function __construct()
     {
-        $this->horse = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->horse = new ArrayCollection();
     }
+    
+    public function __toString(){
+    return $this ->getName();
+  }
 
     /**
      * Add horse

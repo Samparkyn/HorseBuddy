@@ -66,14 +66,6 @@ class HorseController extends Controller
   public function showAction(Horse $horse)
   {
     
-    // $em = $this->getDoctrine()->getManager();
-    //     $horse = $em->getRepository('AppBundle:Horse')
-    //         ->findOneBy(['name' => $horseName]);
-    //         // $stableName = $horse->getStable();
-    //
-    //     if (!$horse) {
-    //         throw $this->createNotFoundException('horse not found :( )');
-    //     }
       $deleteForm = $this->createDeleteForm($horse);
         
     return $this->render('horse/show.html.twig', array(
@@ -94,6 +86,7 @@ class HorseController extends Controller
   {
       $editForm = $this->createForm('AppBundle\Form\HorseType', $horse);
       $editForm->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($horse);
 
       if ($editForm->isSubmitted() && $editForm->isValid()) {
           $em = $this->getDoctrine()->getManager();
@@ -106,6 +99,7 @@ class HorseController extends Controller
       return $this->render('horse/edit.html.twig', array(
           'horse' => $horse,
           'edit_form' => $editForm->createView(),
+          'delete_form' => $deleteForm->createView()
       ));
   }
   

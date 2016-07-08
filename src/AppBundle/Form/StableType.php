@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class StableType extends AbstractType
 {
@@ -18,7 +19,7 @@ class StableType extends AbstractType
             ->add('name')
             ->add('location')
             ->add('capacity')
-            ->add('image')
+            ->add('image', FileType::class)
         ;
     }
     

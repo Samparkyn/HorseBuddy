@@ -13,20 +13,28 @@
                 <dd>{{ stable.location }}</dd>
                 <dt>Capacity:</dt>
                 <dd>{{ stable.capacity }}</dd>
+                
+                <img src="{{ asset('bundles/images/horses/{{ horse.image }}') }}" />
             </dl>
         </div>
     </div>
     
     <ul>
+      <li>
+          <a href="{{ path('stable_edit', { 'id': stable.id }) }}">Edit</a>
+      </li>
+      <li>
+        {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    </li>
         <li>
             <a href="{{ path('stable') }}">Back to Stable list</a>
         </li>
         <li>
-            <a href="{{ path('stable_edit', { 'id': stable.id }) }}">Edit</a>
-        </li>
-        <li>
             <a href="{{ path('horse') }}">Horse List</a>
         </li>
+        
         
     </ul>
 {% endblock %}
