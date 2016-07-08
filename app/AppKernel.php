@@ -19,6 +19,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+           new Sonata\BlockBundle\SonataBlockBundle(),
+           new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+           new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
             new AppBundle\AppBundle(),
         ];
 
