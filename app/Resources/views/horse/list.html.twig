@@ -16,9 +16,14 @@
                         <a href="{{ path('horse_show', {'id': horse.id}) }}">
                             {{ horse.name }}
                         </a>
+                        
                     </td>
                     <td>{{ horse.age }}</td>
                     <td>{{ horse.breed}}</td>
+                    
+                      <td>
+                          <a href="{{ path('horse_edit', {'id': horse.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                      </td>
                     
                 </tr>
             {% endfor %}
