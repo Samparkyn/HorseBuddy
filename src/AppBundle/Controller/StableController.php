@@ -31,6 +31,8 @@ class StableController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($stable);
             $em->flush();
+            
+            $this->addFlash('success', 'Your stable was added!');
 
             return $this->redirectToRoute('stable_show', array('id' => $stable->getId()));
         }

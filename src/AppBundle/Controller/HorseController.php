@@ -32,6 +32,8 @@ class HorseController extends Controller
              $em = $this->getDoctrine()->getManager();
              $em->persist($horse);
              $em->flush();
+             
+             $this->addFlash('success', 'Your horse was added!');
 
              return $this->redirectToRoute('horse_show', array('id' => $horse->getId()));
          }

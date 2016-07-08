@@ -12,6 +12,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+      
         <div class="search-bar">
             <form method="GET" action="" class="js-sea-search sea-search">
                 <input type="search" name="q" placeholder="Search" autocomplete="off" class="search-input">
@@ -29,6 +30,15 @@
         <div class="main-content">
             {% block body %}{% endblock %}
         </div>
+        
+        <div class="main-content">
+          {% for msg in app.session.flashBag.get('success') %}
+            <div class="alert alert-success">
+                  {{ msg }}
+            </div>
+          {% endfor %}
+        </div>
+        
 
         <div class="footer">
             <p class="footer-text">SP Studios </p>
