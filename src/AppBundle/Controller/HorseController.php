@@ -25,8 +25,6 @@ class HorseController extends Controller
    {
        $horse = new Horse();
        
-       $stable = new Stable();
-       
        $form = $this->createForm('AppBundle\Form\HorseType', $horse);
          $form->handleRequest($request);
 
@@ -62,6 +60,7 @@ class HorseController extends Controller
   
   /**
    * @Route("/horse/{id}", name="horse_show" )
+   * @Method("GET")
    */
   public function showAction(Horse $horse)
   {
@@ -79,7 +78,7 @@ class HorseController extends Controller
   /**
    * Displays a form to edit an existing Horse entity.
    *
-   * @Route("/{id}/edit", name="horse_edit")
+   * @Route("/horse/{id}/edit", name="horse_edit")
    * @Method({"GET", "POST"})
    */
   public function editAction(Request $request, Horse $horse)

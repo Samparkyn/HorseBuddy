@@ -75,7 +75,7 @@ class StableController extends Controller
       /**
      * Displays a form to edit an existing Stable entity.
      *
-     * @Route("/{id}/edit", name="stable_edit")
+     * @Route("/stable/{id}/edit", name="stable_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Stable $stable)
