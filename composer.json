@@ -31,7 +31,8 @@
         "doctrine/doctrine-migrations-bundle": "^1.1",
         "vich/uploader-bundle": "^1.1",
         "sonata-project/admin-bundle": "^3.4",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.0"
+        "sonata-project/doctrine-orm-admin-bundle": "^3.0",
+        "sonata-project/user-bundle": "^3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
