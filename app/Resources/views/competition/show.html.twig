@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competition {{ competition.location }}{% endblock %}
+
+{% block body %}
+    <h2 class="horse-name">{{ competition.location }}</h2>
+
+    <div class="horse-container">
+        <div class="horse-photo"></div>
+        <div class="horse-details">
+            <dl class="horse-details-list">
+                <dt>Location:</dt>
+                <dd>{{ competition.location }}</dd>
+                <dt>Discipline:</dt>
+                <dd>{{ competition.discipline }}</dd>
+                <dt>Date:</dt>
+                <dd>{{ competition.date }}</dd>
+                
+                <img src="{{ asset('bundles/images/horses/{{ horse.image }}') }}" />
+            </dl>
+        </div>
+    </div>
+    
+    <ul>
+      
+      <li>
+          <a href="{{ path('competition_edit', { 'id': competition.id }) }}">Edit</a>
+      </li>
+      
+      <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        
+        <li>
+            <a href="{{ path('competition') }}">Back to the list</a>
+        </li>
+    
+  </ul>
+{% endblock %}

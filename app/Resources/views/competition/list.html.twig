@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Competition</th>
+                <th>Location</th>
+                <th>Discipline</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for competition in competitions %}
+                <tr>
+                    <td>
+                        <a href="{{ path('competition_show', {'id': competition.id}) }}">
+                            {{ competition.name }}
+                        </a>
+                        
+                    </td>
+                    <td>{{ competition.location }}</td>
+                    <td>{{ competition.discipline}}</td>
+                    <td>competition.date</td>
+                    
+                      <td>
+                          <a href="{{ path('competition_edit', {'id': competition.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                      </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <ul>
+      <li>
+          <a href="{{ path('competition_new') }}">Add new competition</a>
+      </li>
+      <li>
+          <a href="{{ path('horse') }}">Go to Horse List</a>
+      </li>
+  </ul>
+  
+{% endblock %}
