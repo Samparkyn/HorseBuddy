@@ -19,11 +19,7 @@ class CompetitionType extends AbstractType
         $builder
             ->add('location')
             ->add('discipline')
-            ->add('date', DateType::class, [
-                'widget' => 'single_text',
-                'attr' => ['class' => 'js-datepicker'],
-                'html5' => false,
-            ])
+            ->add('date')
             ;
     }
     

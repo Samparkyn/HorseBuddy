@@ -97,7 +97,7 @@ class Competition
      *
      * @return Competition
      */
-    public function setDate(\DateTime $date = null)
+    public function setDate($date)
     {
         $this->date = $date;
 
