@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class CompetitionType extends AbstractType
 {
@@ -18,7 +19,11 @@ class CompetitionType extends AbstractType
         $builder
             ->add('location')
             ->add('discipline')
-            ->add('date')
+            ->add('date', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+                'html5' => false,
+            ])
             ;
     }
     

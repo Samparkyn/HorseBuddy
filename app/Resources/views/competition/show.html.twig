@@ -14,7 +14,7 @@
                 <dt>Discipline:</dt>
                 <dd>{{ competition.discipline }}</dd>
                 <dt>Date:</dt>
-                <dd>{{ competition.date }}</dd>
+                <dd>{{ competition.date|date('Y-m-d') }}</dd>
                 
                 <img src="{{ asset('bundles/images/horses/{{ horse.image }}') }}" />
             </dl>

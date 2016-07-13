@@ -15,13 +15,13 @@
                 <tr>
                     <td>
                         <a href="{{ path('competition_show', {'id': competition.id}) }}">
-                            {{ competition.name }}
+                            {{ competition.location }}
                         </a>
                         
                     </td>
                     <td>{{ competition.location }}</td>
                     <td>{{ competition.discipline}}</td>
-                    <td>competition.date</td>
+                    <td>{{ competition.date|date('Y-m-d') }}</td>
                     
                       <td>
                           <a href="{{ path('competition_edit', {'id': competition.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>

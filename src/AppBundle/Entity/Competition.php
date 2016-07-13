@@ -28,7 +28,7 @@ class Competition
     private $discipline;
     
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -97,7 +97,7 @@ class Competition
      *
      * @return Competition
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date = null)
     {
         $this->date = $date;
 
